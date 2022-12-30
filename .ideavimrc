@@ -1,0 +1,56 @@
+"" Source your .vimrc
+"source ~/.vimrc
+
+" -- plugins --
+" set surround
+" set commentary
+
+" -- not working plugins --
+" set ideajoin
+
+" -- Suggested options --
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+" set scrolloff=5 "
+
+" Do incremental searching.
+" set incsearch
+
+" Don't use Ex mode, use Q for formatting.
+" map Q gq
+
+" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" -- Hover Documentation -- 
+" this could be better as you have to push esc to exit hover doc
+map gh <Action>(QuickJavaDoc)
+map ge <Action>(ShowErrorDescription)
+map gi <Action>(QuickImplementations)
+" map gh <Action>(QuickDocumentation) -- this doesn't work
+" note: in vscode vim, gh does all of this in one go"
+
+" -- Override vim's back with IDE's back to avoid bugs when using IDE's navigation and back"
+map <C-o>  <Action>(Back)
+map <C-i>  <Action>(Forward)
+
+" -- IDE Movement
+map gt <Action>(ActivateTerminalToolWindow) 
+map gb <Action>(HideAllWindows)
+
+" -- nerdtree --
+set NERDTree
+map gf :NERDTree<CR>
+map gF <Action>(HideSideWindows)
+
+" -- gd is GoToDeclaration --
+:map gD <Action>(GotoTypeDeclaration)
