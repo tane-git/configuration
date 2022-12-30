@@ -3,8 +3,8 @@
 
 # except these whitelisted files:
 !.gitignore
-!.zshrc
-!.bashrc
-!.bash_profile
-!.bash_profile
+# !.zshrc
+# !.bashrc
+# !.bash_profile
+# !.bash_profile
 !.ideavimrc
