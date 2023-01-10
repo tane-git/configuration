@@ -52,6 +52,7 @@
 "      --- IDE Commands
 "      --- IDE Tool windows
 "      --- IDE code features
+"   -- Personal Preference Remapping
 "  -- Todo
 " - Unorganised Additions
 " - eof
@@ -135,7 +136,7 @@ map gi <Action>(QuickImplementations)
 " map gh <Action>(QuickDocumentation) -- this doesn't work
 " note: in vscode vim, gh does all of this in one go"
 
-" ---- Fancy IDE things:
+" ---- Fancy IDE Things:
 " convention: map <leader>g[action] "maybe this could be just g[action] like above?"
 " Actions
 map <leader>gc <action>(ShowIntentionActions)
@@ -145,12 +146,21 @@ map <leader>gr <action>(Refactorings.QuickListPopupAction)
 map <leader>gg <action>(Generate)
 " maybe this should be a different section to 'Hover Info', if all sections should share the same hotkey convention?
 
-" ---- gd is GoToDeclaration, so gD can be:
+" ---- Standard IDE Things:
+" gd is GoToDeclaration, so gD can be:
 :map gD <Action>(GotoTypeDeclaration)
 
-" ---- git - show history
+" git - show history
 map gH <Action>(Vcs.ShowTabbedFileHistory)
 "   ^ maybe this should go under 'IDE Tool Windows' section
+
+
+" -- Personal Preference Remapping
+" On my keyboard I have my '{}' on a symbols layer, under the 'jk' keys.
+" The following remapping, allows for movement by paragraph, in the same direction has 'jk' up and down
+noremap { }
+noremap } {
+
 
 " - Todo
 " - hotkeys to split editors and navigate different splits (maybe not needed)
