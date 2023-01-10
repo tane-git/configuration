@@ -31,26 +31,128 @@
 
 " Find more examples here: https://jb.gg/share-ideavimrc
 
-" -- Hover Documentation -- 
-" this could be better as you have to push esc to exit hover doc
+
+" ~~~ START HERE: ~~~
+
+" Current Questions:
+" Should I link other files or just work in this? lets just do this one for now.
+" Should I somehow have a shared file between nvim and ideaVim? not yet at least.
+" How should I organise one big file? Define a File Structure, and have different sections (see below)
+" What syntax should I have for the Sections, Tags (<Section1>...</Section1>), Indenting, numbering (1.2.4)? tbd...
+
+" File Structure:
+" (Example .ideavimrc)
+" (Start Here above)
+" (Current Questions above)
+" - Sections:
+"   -- Plugins
+"   -- Keymapping:
+"      --- core VIM stuff
+"      --- bug and pest killing
+"      --- IDE Commands
+"      --- IDE Tool windows
+"      --- IDE code features
+"  -- Todo
+" - Unorganised Additions
+" - eof
+
+
+" -- Plugins:
+set NERDTree
+
+
+" - Sections:
+
+
+" --- Core VIM stuff
+let mapleader = " "
+
+" --- Bug and Pest Killing
+" Override vim's back with IDE's back to avoid bugs when using IDE's navigation and back:
+map <C-o> <Action>(Back)
+map <C-i> <Action>(Forward)
+" example: using gD (which is mapped to <Action>(GotoTypeDeclaration), and then trying to go back with <C-o>
+" results in bug because the location histories are different between VIM and Rider.
+
+
+" --- IDE Commands
+" ---- Track IDE Commands
+map <leader>ct <Action>(VimFindActionIdAction)
+
+" ---- Open this file for quick config on the go, and quick reload
+nnoremap <leader>ve :e C:\Users\User\.ideavimrc<CR>
+nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
+
+
+" --- IDE Tool windows"
+" Convention: <leader>s[char-representing-tool-window]
+" Example: map <leader>st <Action>(ActivateTerminalToolWindow) (t for terminal)
+
+" ---- Terminal
+map <leader>st <Action>(ActivateTerminalToolWindow) 
+map gt <Action>(ActivateTerminalToolWindow) 
+
+" ---- File explorer
+map <leader>sf :NERDTree<CR>
+map <leader>f :NERDTree<CR>
+"   ^ Can I also have a quicker mapping? I think so...
+
+" ---- Git
+map <leader>sg <Action>(ActivateVersionControlToolWindow)
+
+" ---- Commit
+map <leader>sc <Action>(ActivateCommitToolWindow)
+
+" ---- Unit Tests
+map <leader>su <Action>(ActivateUnitTestsToolWindow)
+
+" ---- Notifications
+map <leader>sn <Action>(ActivateNotificationsToolWindow)
+
+" todo: add the rest...
+
+
+" ---- Hiding Tool Windows
+map <leader>sv <Action>(HideSideWindows)
+map gF <Action>(HideSideWindows)
+"   ^ duplicate
+map <leader>sb <Action>(HideActiveWindow)
+map gb <Action>(HideActiveWindow)
+"   ^ duplicate
+map <leader>sB <Action>(HideAllWindows)
+map gB <Action>(HideAllWindows)
+"   ^ duplicate
+
+
+" --- IDE code features
+" ---- Hover Info:
+" convention: map g[action]
 map gh <Action>(QuickJavaDoc)
+"   ^ this could be better as you have to push esc to exit hover doc
 map ge <Action>(ShowErrorDescription)
+"   ^ this could be better as it could be built into 'QuickJavaDoc'
 map gi <Action>(QuickImplementations)
 " map gh <Action>(QuickDocumentation) -- this doesn't work
 " note: in vscode vim, gh does all of this in one go"
 
-" -- Override vim's back with IDE's back to avoid bugs when using IDE's navigation and back"
-map <C-o>  <Action>(Back)
-map <C-i>  <Action>(Forward)
+" ---- Fancy IDE things:
+" convention: map <leader>g[action] "maybe this could be just g[action] like above?"
+" Actions
+map <leader>gc <action>(ShowIntentionActions)
+" Refactor
+map <leader>gr <action>(Refactorings.QuickListPopupAction)
+" Generate
+map <leader>gg <action>(Generate)
+" maybe this should be a different section to 'Hover Info', if all sections should share the same hotkey convention?
 
-" -- IDE Movement
-map gt <Action>(ActivateTerminalToolWindow) 
-map gb <Action>(HideAllWindows)
-
-" -- nerdtree --
-set NERDTree
-map gf :NERDTree<CR>
-map gF <Action>(HideSideWindows)
-
-" -- gd is GoToDeclaration --
+" ---- gd is GoToDeclaration, so gD can be:
 :map gD <Action>(GotoTypeDeclaration)
+
+" ---- git - show history
+map gH <Action>(Vcs.ShowTabbedFileHistory)
+"   ^ maybe this should go under 'IDE Tool Windows' section
+
+" - Todo
+" - hotkeys to split editors and navigate different splits (maybe not needed)
+
+" - Unorganised Additions
