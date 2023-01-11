@@ -148,7 +148,16 @@ map <leader>gg <action>(Generate)
 
 " ---- Standard IDE Things:
 " gd is GoToDeclaration, so gD can be:
-:map gD <Action>(GotoTypeDeclaration)
+map gD <Action>(GotoTypeDeclaration)
+
+" Go to Next Error
+map <leader>ge <Action>(GotoNextError)
+map <leader>gE <Action>(GotoPreviousError)
+" what's the difference between 'GotoNextError' and 'ReSharperGotoNextErrorInSolution'?
+" The non-Resharper actions appear to show the hover error info too, where the Resharper actions require an additional action to show error info
+map <leader>gp <Action>(ReSharperGotoNextErrorInSolution)
+map <leader>gP <Action>(ReSharperGotoPrevErrorInSolution)
+
 
 " git - show history
 map gH <Action>(Vcs.ShowTabbedFileHistory)
