@@ -48,32 +48,49 @@
 "   -- Plugins
 "   -- Keymapping:
 "      --- core VIM stuff
+"      --- Personal Preference Remapping
 "      --- bug and pest killing
 "      --- IDE Commands
 "      --- IDE Tool windows
 "      --- IDE code features
-"   -- Personal Preference Remapping
 "  -- Todo
 " - Unorganised Additions
 " - eof
 
 
+" - Sections:
 " -- Plugins:
 set NERDTree
 
-
-" - Sections:
-
-
+" -- Keymapping:
 " --- Core VIM stuff
 let mapleader = " "
 
+
+" --- Personal Preference Remapping
+" On my keyboard I have my '{}' on a symbols layer, under the 'jk' keys.
+" The following remapping, allows for movement by paragraph, in the same direction has 'jk' up and down
+noremap { }
+noremap } {
+
+" for a more natural scroll
+:nnoremap <C-j> <C-d>
+:nnoremap <C-k> <C-u>
+
+
 " --- Bug and Pest Killing
+" Action<QuickJavaDoc> is not working well, so unsetting <C-o> so I can use it for IDE's 'QuickJavaDoc'
+unmap <C-o>
+
 " Override vim's back with IDE's back to avoid bugs when using IDE's navigation and back:
-map <C-o> <Action>(Back)
-map <C-i> <Action>(Forward)
 " example: using gD (which is mapped to <Action>(GotoTypeDeclaration), and then trying to go back with <C-o>
 " results in bug because the location histories are different between VIM and Rider.
+" Note: <C-o> is normally back in VIM, but it is used by IDE's QuickJavaDoc, so I unmap it above.
+map <C-u> <Action>(Back)
+map <C-i> <Action>(Forward)
+" or inverted?
+" map <C-i> <Action>(Back)
+" map <C-u> <Action>(Forward)
 
 
 " --- IDE Commands
@@ -128,8 +145,15 @@ map gB <Action>(HideAllWindows)
 " --- IDE code features
 " ---- Hover Info:
 " convention: map g[action]
-map gh <Action>(QuickJavaDoc)
+" map gh <Action>(QuickJavaDoc)
+" map <leader>gh <Action>(QuickJavaDoc)
+"map K <Action>(QuickJavaDoc)
+map gh :action QuickJavaDoc<CR>
 "   ^ this could be better as you have to push esc to exit hover doc
+" having problems with all of the above, trying to get 'QuickJavaDoc' working, it only works half the time.
+" Temp Solution: unset <C-o> and using that through IDE's keymap for QuickJavaDoc, works everytime.
+
+" ---- Over Hover stuff:
 map ge <Action>(ShowErrorDescription)
 "   ^ this could be better as it could be built into 'QuickJavaDoc'
 map gi <Action>(QuickImplementations)
@@ -162,13 +186,6 @@ map <leader>gP <Action>(ReSharperGotoPrevErrorInSolution)
 " git - show history
 map gH <Action>(Vcs.ShowTabbedFileHistory)
 "   ^ maybe this should go under 'IDE Tool Windows' section
-
-
-" -- Personal Preference Remapping
-" On my keyboard I have my '{}' on a symbols layer, under the 'jk' keys.
-" The following remapping, allows for movement by paragraph, in the same direction has 'jk' up and down
-noremap { }
-noremap } {
 
 
 " - Todo
