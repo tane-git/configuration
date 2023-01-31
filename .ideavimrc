@@ -53,6 +53,9 @@
 "      --- IDE Commands
 "      --- IDE Tool windows
 "      --- IDE code features
+"      --- IDE VCS (git)
+"      --- IDE debugging hotkeys
+"      --- Run
 "  -- Todo
 " - Unorganised Additions
 " - eof
@@ -96,9 +99,10 @@ map <C-i> <Action>(Forward)
 " --- IDE Commands
 " ---- Track IDE Commands
 map <leader>ct <Action>(VimFindActionIdAction)
+" ^ this isn't working right
 
 " ---- Open this file for quick config on the go, and quick reload
-nnoremap <leader>ve :e C:\Users\User\.ideavimrc<CR>
+nnoremap <leader>ve :e C:\Users\t.wilson\.ideavimrc<CR>
 nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
 
 
@@ -156,7 +160,7 @@ map gh :action QuickJavaDoc<CR>
 " ---- Over Hover stuff:
 map ge <Action>(ShowErrorDescription)
 "   ^ this could be better as it could be built into 'QuickJavaDoc'
-map gi <Action>(QuickImplementations)
+map gq <Action>(QuickImplementations)
 " map gh <Action>(QuickDocumentation) -- this doesn't work
 " note: in vscode vim, gh does all of this in one go"
 
@@ -174,6 +178,12 @@ map <leader>gg <action>(Generate)
 " gd is GoToDeclaration, so gD can be:
 map gD <Action>(GotoTypeDeclaration)
 
+" Go to Implementation
+map gi <Action>(ReSharperGotoImplementation)
+map <leader>gi <Action>(ReSharperGotoImplementation)
+map gI <Action>(GotoSuperMethod)
+map <leader>gi <Action>(GotoSuperMethod)
+
 " Go to Next Error
 map <leader>ge <Action>(GotoNextError)
 map <leader>gE <Action>(GotoPreviousError)
@@ -182,13 +192,31 @@ map <leader>gE <Action>(GotoPreviousError)
 map <leader>gp <Action>(ReSharperGotoNextErrorInSolution)
 map <leader>gP <Action>(ReSharperGotoPrevErrorInSolution)
 
+" Find Usages
+map <leader>gf <Action>(FindUsages)
+
 
 " git - show history
 map gH <Action>(Vcs.ShowTabbedFileHistory)
 "   ^ maybe this should go under 'IDE Tool Windows' section
 
+" --- IDE VCS (git)
+map <leader>ch <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>ca <Action>(Annotate)
+
+" --- IDE debugging hotkeys
+map <leader>di <Action>(StepInto)
+map <leader>du <Action>(StepOut)
+map <leader>do <Action>(StepOver)
+
+" --- Run
+map <leader>rd <Action>(RiderUnitTestDebugContextAction)
+map <leader>rf <Action>(ReformatCode)
 
 " - Todo
 " - hotkeys to split editors and navigate different splits (maybe not needed)
 
 " - Unorganised Additions
+
+map <leader>ab <Action>(ToggleLineBreakpoint)
+
