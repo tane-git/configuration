@@ -113,6 +113,7 @@ nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
 " ---- Terminal
 map <leader>st <Action>(ActivateTerminalToolWindow) 
 map gt <Action>(ActivateTerminalToolWindow) 
+map gT <Action>(Terminal.OpenInTerminal) 
 
 " ---- File explorer
 map <leader>sf :NERDTree<CR>
@@ -130,6 +131,9 @@ map <leader>su <Action>(ActivateUnitTestsToolWindow)
 
 " ---- Notifications
 map <leader>sn <Action>(ActivateNotificationsToolWindow)
+
+" ---- Notifications
+map <leader>sd <Action>(ActivateDebugToolWindow)
 
 " todo: add the rest...
 
@@ -205,18 +209,29 @@ map <leader>ch <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>ca <Action>(Annotate)
 
 " --- IDE debugging hotkeys
+map <leader>db <Action>(ToggleLineBreakpoint)
 map <leader>di <Action>(StepInto)
 map <leader>du <Action>(StepOut)
 map <leader>do <Action>(StepOver)
 
 " --- Run
+" debug thing where cursor is:
 map <leader>rd <Action>(RiderUnitTestDebugContextAction)
+" run thing where cursor is:
+map <leader>ru <Action>(RiderUnitTestRunContextAction)
+" format:
 map <leader>rf <Action>(ReformatCode)
+" re-run:
+map <leader>rr <Action>(mainRunToolbarRunProcess)
+" stop
+map <leader>rs <Action>(RunToolbarStopAction)
+" TODO: run all
+map <leader>ra <Action>(RiderUnitTestRunSolutionAction)
+
 
 " - Todo
 " - hotkeys to split editors and navigate different splits (maybe not needed)
 
 " - Unorganised Additions
 
-map <leader>ab <Action>(ToggleLineBreakpoint)
 
