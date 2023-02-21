@@ -77,8 +77,8 @@ noremap { }
 noremap } {
 
 " for a more natural scroll
-:nnoremap <C-j> <C-d>
-:nnoremap <C-k> <C-u>
+:noremap <C-j> <C-d>
+:noremap <C-k> <C-u>
 
 
 " --- Bug and Pest Killing
@@ -155,14 +155,16 @@ map gB <Action>(HideAllWindows)
 " convention: map g[action]
 " map gh <Action>(QuickJavaDoc)
 " map <leader>gh <Action>(QuickJavaDoc)
-"map K <Action>(QuickJavaDoc)
+" map K <Action>(QuickJavaDoc)
+" map gh :action QuickJavaDoc<CR>
 map gh :action QuickJavaDoc<CR>
 "   ^ this could be better as you have to push esc to exit hover doc
 " having problems with all of the above, trying to get 'QuickJavaDoc' working, it only works half the time.
 " Temp Solution: unset <C-o> and using that through IDE's keymap for QuickJavaDoc, works everytime.
 
 " ---- Over Hover stuff:
-map ge <Action>(ShowErrorDescription)
+" map ge <Action>(ShowErrorDescription)
+map gy <Action>(ShowErrorDescription)
 "   ^ this could be better as it could be built into 'QuickJavaDoc'
 map gq <Action>(QuickImplementations)
 " map gh <Action>(QuickDocumentation) -- this doesn't work
@@ -189,6 +191,8 @@ map gI <Action>(GotoSuperMethod)
 map <leader>gi <Action>(GotoSuperMethod)
 
 " Go to Next Error
+map ge <Action>(GotoNextError)
+map gE <Action>(GotoPreviousError)
 map <leader>ge <Action>(GotoNextError)
 map <leader>gE <Action>(GotoPreviousError)
 " what's the difference between 'GotoNextError' and 'ReSharperGotoNextErrorInSolution'?
@@ -219,12 +223,15 @@ map <leader>do <Action>(StepOver)
 map <leader>rd <Action>(RiderUnitTestDebugContextAction)
 " run thing where cursor is:
 map <leader>ru <Action>(RiderUnitTestRunContextAction)
+" run previous test run:
+map <leader>rp <Action>(RiderUnitTestRepeatPreviousRunAction)
 " format:
 map <leader>rf <Action>(ReformatCode)
 " re-run:
 map <leader>rr <Action>(mainRunToolbarRunProcess)
 " stop
-map <leader>rs <Action>(RunToolbarStopAction)
+" map <leader>rs <Action>(RunToolbarStopAction)
+map <leader>rs <Action>(RunToolbarMainMultipleStopAction)
 " TODO: run all
 map <leader>ra <Action>(RiderUnitTestRunSolutionAction)
 
