@@ -55,6 +55,7 @@
 "      --- IDE code features
 "      --- IDE VCS (git)
 "      --- IDE debugging hotkeys
+"      --- IDE tab management
 "      --- Run
 "  -- Todo
 " - Unorganised Additions
@@ -104,6 +105,7 @@ map <leader>ct <Action>(VimFindActionIdAction)
 " ---- Open this file for quick config on the go, and quick reload
 nnoremap <leader>ve :e C:\Users\t.wilson\.ideavimrc<CR>
 nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap <leader>vt :action VimFindActionIdAction<CR>
 
 
 " --- IDE Tool windows"
@@ -193,8 +195,10 @@ map <leader>gi <Action>(GotoSuperMethod)
 " Go to Next Error
 map ge <Action>(GotoNextError)
 map gE <Action>(GotoPreviousError)
+" duplicates...
 map <leader>ge <Action>(GotoNextError)
 map <leader>gE <Action>(GotoPreviousError)
+
 " what's the difference between 'GotoNextError' and 'ReSharperGotoNextErrorInSolution'?
 " The non-Resharper actions appear to show the hover error info too, where the Resharper actions require an additional action to show error info
 map <leader>gp <Action>(ReSharperGotoNextErrorInSolution)
@@ -218,6 +222,26 @@ map <leader>di <Action>(StepInto)
 map <leader>du <Action>(StepOut)
 map <leader>do <Action>(StepOver)
 
+" --- IDE tab management (note this conflicts with <leader>[v]im actions)
+map <leader>ws <Action>(MoveTabRight)
+
+" which one?
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+map <leader>wo <Action>(MoveEditorToOppositeTabGroup)
+map <leader>wd <Action>(OpenEditorInOppositeTabGroup)
+
+" what about something like:
+map <leader>wL <Action>(MoveEditorToOppositeTabGroup)
+" map <leader>wS <Action>(MoveTabRight) && <C-w>h (doesnt seem to work)
+
+" duplicating default vim stuff so you can use either
+map <leader>wh <C-w>h
+map <leader>wl <C-w>l
+
+" // what could these do?
+" map <leader>wj <C-w>j
+" map <leader>wk <C-w>k
+
 " --- Run
 " debug thing where cursor is:
 map <leader>rd <Action>(RiderUnitTestDebugContextAction)
@@ -225,10 +249,11 @@ map <leader>rd <Action>(RiderUnitTestDebugContextAction)
 map <leader>ru <Action>(RiderUnitTestRunContextAction)
 " run previous test run:
 map <leader>rp <Action>(RiderUnitTestRepeatPreviousRunAction)
+map <leader>rr <Action>(RiderUnitTestRepeatPreviousRunAction)
 " format:
 map <leader>rf <Action>(ReformatCode)
 " re-run:
-map <leader>rr <Action>(mainRunToolbarRunProcess)
+map <leader>rm <Action>(mainRunToolbarRunProcess)
 " stop
 " map <leader>rs <Action>(RunToolbarStopAction)
 map <leader>rs <Action>(RunToolbarMainMultipleStopAction)
