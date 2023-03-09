@@ -222,7 +222,7 @@ map <leader>di <Action>(StepInto)
 map <leader>du <Action>(StepOut)
 map <leader>do <Action>(StepOver)
 
-" --- IDE tab management (note this conflicts with <leader>[v]im actions)
+" --- IDE window management (note this conflicts with <leader>[v]im actions)
 map <leader>ws <Action>(MoveTabRight)
 
 " which one?
@@ -241,6 +241,14 @@ map <leader>wl <C-w>l
 " // what could these do?
 " map <leader>wj <C-w>j
 " map <leader>wk <C-w>k
+
+" Unsplit
+map <leader>wu <Action>(Unsplit)
+
+" --- IDE Tab Management
+map <leader>to :tabo<CR>
+map <leader>tr <Action>(CloseAllToTheRight)
+map <leader>tl <Action>(CloseAllToTheLeft)
 
 " --- Run
 " debug thing where cursor is:
