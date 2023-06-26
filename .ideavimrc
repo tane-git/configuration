@@ -1,6 +1,7 @@
 "" Source your .vimrc
 "source ~/.vimrc
 
+
 " -- plugins --
 " set surround
 " set commentary
@@ -122,6 +123,8 @@ map <C-i> <Action>(Forward)
     map <leader>sf :NERDTree<CR>
     map <leader>f :NERDTree<CR>
     "   ^ Can I also have a quicker mapping? I think so...
+    
+    map <leader>si <Action>(ActivateFindToolWindow)
 
     " ---- Git
     map <leader>sg <Action>(ActivateVersionControlToolWindow)
@@ -141,11 +144,13 @@ map <C-i> <Action>(Forward)
     " ---- Notifications
     map <leader>sd <Action>(ActivateDebugToolWindow)
 
-    " todo: add the rest...
+    " ---- Endpoints
+    map <leader>se <Action>(ActivateEndpointsToolWindow)
     
     " ---- All tool windows
     map <leader>so <Action>(ToolWindowsGroup)
-
+    
+    map <leader>ss <Action>(SearchEverywhere)
 
     " ---- Hiding Tool Windows
     " map <leader>sv <Action>(HideSideWindows)
@@ -210,7 +215,8 @@ map <C-i> <Action>(Forward)
     map <leader>gP <Action>(ReSharperGotoPrevErrorInSolution)
 
     " Find Usages
-    map <leader>gf <Action>(FindUsages)
+    " map <leader>gf <Action>(FindUsages)
+    map gf <Action>(FindUsages)
 
 
     " git - show history
@@ -219,6 +225,7 @@ map <C-i> <Action>(Forward)
 
     " --- IDE VCS (git)
     map <leader>ch <Action>(Vcs.ShowTabbedFileHistory)
+    map <leader>cH <Action>(Vcs.ShowHistoryForBlock)
     map <leader>ca <Action>(Annotate)
     map <leader>cb <Action>(Git.CompareWithBranch)
 
@@ -230,10 +237,12 @@ map <C-i> <Action>(Forward)
     map <leader>do <Action>(StepOver)
     map <leader>dr <Action>(Resume)
     map <leader>dm <Action>(XDebugger.MuteBreakpoints)
+    map <leader>dv <Action>(ViewBreakpoints)
 
     " --- IDE window management (note this conflicts with <leader>[v]im actions)
     map <leader>ws <Action>(MoveTabRight)
     map <leader>wv <Action>(SplitVertically)
+    
 
     " which one?
     map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
