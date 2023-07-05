@@ -222,6 +222,15 @@ map <C-i> <Action>(Forward)
     " git - show history
     map gH <Action>(Vcs.ShowTabbedFileHistory)
     "   ^ maybe this should go under 'IDE Tool Windows' section
+    
+    " Navigate File through Methods
+    map gm <Action>(MethodDown)
+    
+    map gM <Action>(MethodUp)
+    map g, <Action>(MethodUp)
+    
+    map m <Action>(MethodDown)
+    map , <Action>(MethodUp)
 
     " --- IDE VCS (git)
     map <leader>ch <Action>(Vcs.ShowTabbedFileHistory)
