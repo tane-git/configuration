@@ -237,10 +237,12 @@ map <C-i> <Action>(Forward)
     map <leader>cH <Action>(Vcs.ShowHistoryForBlock)
     map <leader>ca <Action>(Annotate)
     map <leader>cb <Action>(Git.CompareWithBranch)
+    map <leader>cc <Action>(Git.Branches)
 
 
     " --- IDE debugging hotkeys
     map <leader>db <Action>(ToggleLineBreakpoint)
+    map <leader>de <Action>(EvaluateExpression)
     map <leader>di <Action>(StepInto)
     map <leader>du <Action>(StepOut)
     map <leader>do <Action>(StepOver)
@@ -281,15 +283,18 @@ map <C-i> <Action>(Forward)
     " --- Run
     " debug thing where cursor is:
     map <leader>rd <Action>(RiderUnitTestDebugContextAction)
+    map <leader>rD <Action>(mainRunToolbarDebugProcess)
+    
     " run thing where cursor is:
     map <leader>ru <Action>(RiderUnitTestRunContextAction)
+    map <leader>rm <Action>(mainRunToolbarRunProcess)
+    
     " run previous test run:
     map <leader>rp <Action>(RiderUnitTestRepeatPreviousRunAction)
     map <leader>rr <Action>(RiderUnitTestRepeatPreviousRunAction)
     " format:
-    map <leader>rf <Action>(ReformatCode)
-    " re-run:
-    map <leader>rm <Action>(mainRunToolbarRunProcess)
+    map <leader>rf <Action>(SaveDocument)
+    map <leader>rF <Action>(ReformatCode)
     " stop
     " map <leader>rs <Action>(RunToolbarStopAction)
     map <leader>rs <Action>(RunToolbarMainMultipleStopAction)
@@ -306,6 +311,15 @@ map <C-i> <Action>(Forward)
     " -- show previous
     map <leader>ad <Action>(copilot.disableCopilot)
     map <leader>ae <Action>(copilot.enableCopilot)
+    
+    map <leader>aa <Action>(EditorSortLines)
+    map <leader>ao <Action>(OptimizeImports)
+    
+    " -- View Manipulation
+    map zf <Action>(ExpandCollapseToggleAction)
+    map zF <Action>(CollapseAllRegions)
+    map zU <Action>(ExpandAllRegions)
+    
 
     " - Todo
     " - hotkeys to split editors and navigate different splits (maybe not needed)
