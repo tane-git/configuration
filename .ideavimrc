@@ -67,10 +67,11 @@
 " -- Plugins:
 set NERDTree
 
-" -- Keymapping:
-" --- Core VIM stuff
 let mapleader = " "
 
+nnoremap <leader>ve :e C:\Users\t.wilson\.ideavimrc<CR>
+nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap <leader>vt :action VimFindActionIdAction<CR>
 
 " --- Personal Preference Remapping
 " On my keyboard I have my '{}' on a symbols layer, under the 'jk' keys.
@@ -99,12 +100,6 @@ map <C-i> <Action>(Forward)
 
 
 " --- IDE Commands
-" ---- Track IDE Commands
-
-    " ---- Open this file for quick config on the go, and quick reload
-    nnoremap <leader>ve :e C:\Users\t.wilson\.ideavimrc<CR>
-    nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
-    nnoremap <leader>vt :action VimFindActionIdAction<CR>
 
 
     " --- IDE Tool windows"
@@ -143,8 +138,11 @@ map <C-i> <Action>(Forward)
     " ---- Notifications
     map <leader>sn <Action>(ActivateNotificationsToolWindow)
 
-    " ---- Notifications
+    " ---- Debugger
     map <leader>sd <Action>(ActivateDebugToolWindow)
+    
+    " ---- Runner
+    map <leader>sr <Action>(ActivateRunToolWindow)
 
     " ---- Endpoints
     map <leader>se <Action>(ActivateEndpointsToolWindow)
@@ -152,20 +150,25 @@ map <C-i> <Action>(Forward)
     " ---- All tool windows
     map <leader>so <Action>(ToolWindowsGroup)
     
-    map <leader>ss <Action>(SearchEverywhere)
+    " ---- See Search
+    " map <leader>ss <Action>(SearchEverywhere)
+    map <leader>ss <Action>(ShowSettings)
+
+    " ---- See Build
+    map <leader>sb <Action>(ActivateBuildToolWindow)
+    
+    " ---- See Packages
+    map <leader>sp <Action>(ActivateNuGetToolWindow)
+    
+    " ---- See Version Changes
+    map <leader>sv <Action>(ActivateVcsChangesToolWindow)
 
     " ---- Hiding Tool Windows
     " map <leader>sv <Action>(HideSideWindows)
     " map gF <Action>(HideSideWindows)
     "   ^ duplicate
-    map <leader>sb <Action>(HideActiveWindow)
     map gb <Action>(HideActiveWindow)
-    "   ^ duplicate
-    map <leader>sB <Action>(HideAllWindows)
     map gB <Action>(HideAllWindows)
-    
-    map gB <Action>(HideAllWindows)
-    "   ^ duplicate
 
 
     " --- IDE code features
@@ -243,6 +246,7 @@ map <C-i> <Action>(Forward)
     map <leader>cb <Action>(Git.CompareWithBranch)
     map <leader>cc <Action>(Git.Branches)
     map <leader>cd <Action>(Compare.SameVersion)
+    map <leader>cr <Action>(ChangesView.Revert)
     
     " --- IDE debugging hotkeys
     map <leader>db <Action>(ToggleLineBreakpoint)
@@ -259,15 +263,9 @@ map <C-i> <Action>(Forward)
     " --- IDE window management (note this conflicts with <leader>[v]im actions)
     map <leader>ws <Action>(MoveTabRight)
     map <leader>wv <Action>(SplitVertically)
-    
-
-    " which one?
-    map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
     map <leader>wo <Action>(MoveEditorToOppositeTabGroup)
-    map <leader>wd <Action>(OpenEditorInOppositeTabGroup)
-
-    " what about something like
     map <leader>wL <Action>(MoveEditorToOppositeTabGroup)
+    
     " map <leader>wS <Action>(MoveTabRight) && <C-w>h (doesnt seem to work)
 
    " duplicating default vim stuff so you can use either
@@ -290,15 +288,16 @@ map <C-i> <Action>(Forward)
     " debug thing where cursor is:
     map <leader>rd <Action>(RiderUnitTestDebugContextAction)
     map <leader>rD <Action>(mainRunToolbarDebugProcess)
+    map <leader>rD <Action>(Debug)
     
     " run thing where cursor is:
     map <leader>ru <Action>(RiderUnitTestRunContextAction)
     map <leader>rm <Action>(mainRunToolbarRunProcess)
+    map <leader>re <Action>(Resume)
     
     " run previous test run:
     map <leader>rp <Action>(RiderUnitTestRepeatPreviousRunAction)
     " more comfy binding duplicate:
-    map <leader>re <Action>(RiderUnitTestRepeatPreviousRunAction)
     
     map <leader>rr <Action>(RiderUnitTestRepeatPreviousRunAction)
     " format:
@@ -325,9 +324,21 @@ map <C-i> <Action>(Forward)
     map <leader>ao <Action>(OptimizeImports)
     
     " -- View Manipulation
-    map zf <Action>(ExpandCollapseToggleAction)
-    map zF <Action>(CollapseAllRegions)
-    map zU <Action>(ExpandAllRegions)
+    map za <Action>(ExpandCollapseToggleAction)
+    
+    " deprecated:
+    " map zf <Action>(CollapseRegion)
+    " map zu <Action>(ExpandRegion)
+    " defaults:
+    " map zc <Action>(CollapseRegion)
+    " map zo <Action>(ExpandRegion)
+    
+    " deprecated:
+    " map zF <Action>(CollapseAllRegions)
+    " map zU <Action>(ExpandAllRegions)
+    " defaults:
+    " map zM <Action>(CollapseAllRegions) *default to maximise folding
+    " map zR <Action>(ExpandAllRegions) *default to reduce folding
 
     " - Todo
     " - hotkeys to split editors and navigate different splits (maybe not needed)
