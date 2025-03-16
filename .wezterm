@@ -1,0 +1,12 @@
+local wezterm = require 'wezterm'
+local act = wezterm.action
+
+local config = {}
+
+-- Open WSL by default
+config.default_domain = 'WSL:Ubuntu-20.04'
+
+-- Style
+config.color_scheme = 'Wez'
+config.font = wezterm.font 'JetBrains Mono'
+config.font_size = 16.0
