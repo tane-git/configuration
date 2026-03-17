@@ -326,6 +326,7 @@ map <C-i> <Action>(Forward)
     " -- View Manipulation
     map za <Action>(ExpandCollapseToggleAction)
     
+    map zd <Action>(Compare.SameVersion)
     " deprecated:
     " map zf <Action>(CollapseRegion)
     " map zu <Action>(ExpandRegion)
@@ -339,6 +340,9 @@ map <C-i> <Action>(Forward)
     " defaults:
     " map zM <Action>(CollapseAllRegions) *default to maximise folding
     " map zR <Action>(ExpandAllRegions) *default to reduce folding
+    
+    " map zd <Action>(ToggleRenderedDocPresentation)
+    " map zD <Action>(ToggleRenderedDocPresentationForAll)
 
     " - Todo
     " - hotkeys to split editors and navigate different splits (maybe not needed)
